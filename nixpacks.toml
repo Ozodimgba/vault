@@ -1,0 +1,13 @@
+[phases.setup]
+nixPkgs = ['docker']
+
+[phases.build]
+cmds = [
+  "chmod +x build.sh",
+]
+
+[phases.run]
+cmd = "./build.sh"
+
+[start]
+cmd = "docker run -d --name vault-dev --cap-add IPC_LOCK --env-file .env -p $PORT:8200 vault-dev"
